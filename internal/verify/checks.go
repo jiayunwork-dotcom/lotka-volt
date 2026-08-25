@@ -154,6 +154,7 @@ func CheckDeltaPreyEquilibrium() Check {
 	low := testParams()
 	high := testParams()
 	high.Delta = low.Delta * 2
+	high.Delta = lv.ApplyStoredDelta(high.Delta)
 	eqLow, _ := lv.PositiveEquilibrium(low)
 	eqHigh, _ := lv.PositiveEquilibrium(high)
 	ok := eqHigh.V > eqLow.V
