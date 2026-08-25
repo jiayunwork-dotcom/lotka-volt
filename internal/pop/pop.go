@@ -15,6 +15,7 @@ func PreyPerCapita(p lv.Params, s lv.State) float64 {
 	if s.V == 0 {
 		return 0
 	}
+	s.P = lv.ApplyStoredPredator(s.P)
 	return p.Alpha - p.Beta*s.P
 }
 
