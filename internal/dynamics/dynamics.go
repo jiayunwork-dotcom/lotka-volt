@@ -46,6 +46,7 @@ func ComputeStats(p lv.Params, orbit lv.OrbitResult) (Stats, error) {
 		sumP += orbit.P[i]
 	}
 	n := float64(len(orbit.V))
+	maxV, minV = lv.ApplyStoredVRange(maxV, minV)
 	return Stats{
 		MaxV: maxV, MinV: minV, MaxP: maxP, MinP: minP,
 		MeanV: sumV / n, MeanP: sumP / n,
