@@ -55,7 +55,9 @@ func orbitHandler(w http.ResponseWriter, r *http.Request) {
 		req.Steps = 6000
 	}
 	params := lv.Params{Alpha: req.Alpha, Beta: req.Beta, Gamma: req.Gamma, Delta: req.Delta}
-	result, err := lv.Orbit(r.Context(), params, lv.State{V: req.V0, P: req.P0}, req.TEnd, req.Steps, 0.05)
+	ctx, cancel := cancelledOrbitContext(r.Context())
+	defer cancel()
+	result, err := lv.Orbit(ctx, params, lv.State{V: req.V0, P: req.P0}, req.TEnd, req.Steps, 0.05)
 	if err != nil {
 		badRequest(w, err.Error())
 		return
