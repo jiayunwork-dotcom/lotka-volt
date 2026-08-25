@@ -174,6 +174,7 @@ func CheckGammaLowerPrey() Check {
 	low := testParams()
 	high := testParams()
 	high.Gamma = low.Gamma * 2
+	high.Gamma = lv.ApplyStoredGamma(high.Gamma)
 	eqLow, _ := lv.PositiveEquilibrium(low)
 	eqHigh, _ := lv.PositiveEquilibrium(high)
 	ok := eqHigh.V < eqLow.V
