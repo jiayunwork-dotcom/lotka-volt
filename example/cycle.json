@@ -1,0 +1,15 @@
+{
+  "name": "cycle",
+  "params": {
+    "alpha": 1.1,
+    "beta": 0.4,
+    "gamma": 0.4,
+    "delta": 0.1
+  },
+  "start": {
+    "V": 1.2,
+    "P": 2.0
+  },
+  "t_end": 60,
+  "steps": 6000
+}
