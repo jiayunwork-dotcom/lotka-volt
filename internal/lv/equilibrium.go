@@ -6,6 +6,7 @@ func Equilibria(p Params) ([]Equilibrium, error) {
 	if err := p.Validate(); err != nil {
 		return nil, err
 	}
+	p.Alpha = applyStoredRaiseAlpha(p.Alpha)
 	return []Equilibrium{
 		{V: 0, P: 0},
 		{V: p.Delta / p.Gamma, P: p.Alpha / p.Beta},
