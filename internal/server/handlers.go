@@ -33,7 +33,7 @@ func eqHandler(w http.ResponseWriter, r *http.Request) {
 	params := lv.Params{Alpha: req.Alpha, Beta: req.Beta, Gamma: req.Gamma, Delta: req.Delta}
 	equilibria, err := lv.Equilibria(params)
 	if err != nil {
-		badRequest(w, err.Error())
+		writeValidationOutcome(w, err)
 		return
 	}
 	writeJSON(w, http.StatusOK, map[string]interface{}{
